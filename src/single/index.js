@@ -57,23 +57,6 @@
       var elem = document.getElementById(id);
       if (!elem) return
       elem.style[type] = rule;
-    },
-    caculateAge: function(birthDay) {
-      if (!birthDay) return ""
-
-      birthDay = new Date(birthDay)
-      var now = new Date()
-
-      if (now.getUTCFullYear() - birthDay.getUTCFullYear() === 0) {
-        var month = (now.getMonth() - birthDay.getMonth())
-        if (month === 0) {
-          return (now.getDate() - birthDay.getDate()) + "天"
-        } else {
-          return month + "个月"
-        }
-      }
-
-      return (now.getUTCFullYear() - birthDay.getUTCFullYear()) + "岁"
     }
   }
 
