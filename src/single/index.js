@@ -23,6 +23,7 @@
     },
     removeLoading: function() {
       var loading = document.getElementById('loading');
+      if (!loading) return false;
       loading.style.opacity = 1;
       var opaqueTimer = setInterval(function () {
         loading.style.opacity = loading.style.opacity - 0.025;
@@ -70,6 +71,4 @@
   var finishLoadingEvent = new Event('finishLoading');
 
   business.addContent()
-
-  document.body.addEventListener('finishLoading', infrastructure.removeLoading, false);
 }())
