@@ -1,11 +1,4 @@
 (function () {
-  // 存储一些基础信息
-  var id = localStorage.getItem("userId");
-  var token = localStorage.getItem("token");
-  var APIs = {
-
-  };
-
   // 处理网络请求和取出本地记录、消除loading状态等等的基础函数
   var infrastructure = {
     handleGetRequest: function(url, callback, authToken) {
@@ -71,6 +64,13 @@
       elem.style[type] = rule;
     }
   }
+
+  // 存储一些基础信息
+  var id = localStorage.getItem("userId");
+  var token = localStorage.getItem("token");
+  var APIs = {
+
+  };
 
   // 业务逻辑相关的代码
   var business = {
