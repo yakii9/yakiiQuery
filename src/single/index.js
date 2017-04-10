@@ -6,12 +6,12 @@
         setContentById: function(id, content, type) {
             type = type || "innerHTML";
             var elem = document.getElementById(id);
-            if (!elem) return
+            if (!elem) return;
             elem[type] = content;
         },
         setCssById: function(id, rule, type) {
             var elem = document.getElementById(id);
-            if (!elem) return
+            if (!elem) return;
             elem.style[type] = rule;
         },
         onError: function() {},
@@ -20,9 +20,9 @@
             httpRequest.onreadystatechange = function() {
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     if (httpRequest.status < 399 && httpRequest.status > 199) {
-                      callback(httpRequest.response);
+                        callback(httpRequest.response);
                     } else {
-                      infrastructure.onError();
+                        infrastructure.onError();
                     }
                 }
             },
@@ -79,6 +79,18 @@
     // 业务逻辑相关的代码
     var business = {
         addContent: function() {
+            // please realize some necssary interface
+            infrastructure.onError = function () {
+
+            };
+
+            infrastructure.showProgress = function () {
+
+            };
+
+            infrastructure.hideProgress = function () {
+
+            };
 
         }
     };
@@ -87,4 +99,4 @@
 
     infrastructure.showProgress();
     business.addContent();
-}())
+}());
