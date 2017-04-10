@@ -18,18 +18,22 @@
         handleGetRequest: function(url, callback, authToken) {
             var httpRequest = new XMLHttpRequest();
             httpRequest.onreadystatechange = function() {
-                    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-                        callback(httpRequest.response);
+                if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                    if (httpRequest.status < 399 && httpRequest.status > 199) {
+                      callback(httpRequest.response);
+                    } else {
+                      infrastructure.onError();
                     }
-                },
-                httpRequest.onerror = function() {
-                    infrastructure.onError();
-                },
-                httpRequest.open('GET', url);
+                }
+            },
+            httpRequest.onerror = function() {
+                infrastructure.onError();
+            },
+            httpRequest.open('GET', url);
             httpRequest.setRequestHeader("auth-token", authToken);
             httpRequest.send();
 
-            return httpRequest
+            return httpRequest;
         },
         showProgress: function() {},
         hideProgress: function() {},
@@ -63,7 +67,7 @@
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-    }
+    };
 
     // 存储一些基础信息
     var id = localStorage.getItem("userId");
@@ -77,9 +81,10 @@
         addContent: function() {
 
         }
-    }
+    };
 
     var finishLoadingEvent = new Event('finishLoading');
 
-    business.addContent()
+    infrastructure.showProgress();
+    business.addContent();
 }())
