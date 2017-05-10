@@ -15,7 +15,7 @@
               }
               return root;
             } else {
-                var element = document.createElement(entity.targetName);
+                var element = document.createElement(entity.nodeName);
                 var properties = Object.getOwnPropertyNames(entity);
                 for (j=0; j<properties.length; j++) {
                     element[properties[j]] = entity[properties[j]];
