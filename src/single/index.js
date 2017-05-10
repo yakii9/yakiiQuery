@@ -6,7 +6,7 @@
         buildElementsTree: function(entity) {
             if (!entity) return null;
 
-            var i, j;
+            var i;
             if (Array.isArray(entity)) {
               // 我们约定，数组的第一个元素存储根节点的信息
               var root = infrastructure.buildElementsTree(entity[0]);
@@ -17,8 +17,8 @@
             } else {
                 var element = document.createElement(entity.nodeName);
                 var properties = Object.getOwnPropertyNames(entity);
-                for (j=0; j<properties.length; j++) {
-                    element[properties[j]] = entity[properties[j]];
+                for (i=0; i<properties.length; i++) {
+                    element[properties[i]] = entity[properties[i]];
                 }
                 return element;
             }
