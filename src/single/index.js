@@ -40,6 +40,11 @@
             if (!elem) return;
             elem.style[type] = rule;
         },
+        addListernerById: function(id, type, callback) {
+            var elem = document.getElementById(id);
+            if (!elem || !type) return;
+            elem.addEventListener(type, callback, false);
+        },
         onError: function() {},
         handleGetRequest: function(url, callback, authToken) {
             var httpRequest = new XMLHttpRequest();
