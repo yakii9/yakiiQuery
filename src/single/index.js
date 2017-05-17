@@ -3,6 +3,16 @@
     var loadingTimer = 0;
 
     var infrastructure = {
+        addQueryStringToLink: function(queryList) {
+            if (!queryList || !Array.isArray(queryList) || queryList.length === 0) return false;
+
+            var queryString = "?";
+            for (var i=0; i<queryList.length; i++) {
+              queryString = queryString + queryList[i].key + "=" + queryList[i].value + "&";
+            }
+
+            return queryString.slice(0, -1);
+        },
         buildElementsTree: function(entity) {
             if (!entity) return null;
 
