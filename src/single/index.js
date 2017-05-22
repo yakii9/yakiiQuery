@@ -4,7 +4,7 @@
 
     var infrastructure = {
         getLink: function(queryList, link) {
-          if (!queryList || !Array.isArray(queryList) || queryList.length === 0) return false;
+          if (!queryList || !Array.isArray(queryList) || queryList.length === 0) return link;
 
           return link + "?" + queryList.map(function(v) {
             return v.key + "=" + v.value;
